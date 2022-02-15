@@ -1,16 +1,15 @@
 version: 2.1
 
 jobs:
-  say-hello:
+  build:
     docker:
-      - image: cimg/base:stable
+      - image: hashicorp/packer:1.7.9
     steps:
       - checkout
       - run:
-          name: "Say hello"
-          command: "echo Hello, World!"
-          
+          name: list directory
+          command: ls -la
 workflows:
   say-hello-workflow:
     jobs:
-      - say-hello
+      - build
