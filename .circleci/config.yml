@@ -21,6 +21,11 @@ jobs:
           command: |
             cd packer
             packer validate ./templates
+      - run:
+          name: Packer build
+          command: |
+            cd packer
+            packer build ./templates
 workflows:
   build-ami:
     jobs:
