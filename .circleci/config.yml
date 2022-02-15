@@ -7,13 +7,10 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Packer init & check formatting & validate template
+          name: Packer init
           command: |
-            cd packer/
-            packer init ./templates
-            packer fmt -check -recursive .
-            packer validate ./templates
-            
+            cd packer/templates
+            packer init .
 workflows:
   build-ami:
     jobs:
