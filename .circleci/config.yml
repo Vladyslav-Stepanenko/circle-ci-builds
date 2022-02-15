@@ -2,14 +2,18 @@ version: 2.1
 
 jobs:
   build:
+    working_directory: ~/packer/templates
     docker:
       - image: hashicorp/packer:1.7.9
     steps:
       - checkout
       - run:
-          name: list directory
-          command: ls -la
+          name: Packer init & check formatting & validate template
+          command: |
+            packer init .
+            packer fmt -check -recursive .
+            packer validate .
 workflows:
-  say-hello-workflow:
+  build-ami:
     jobs:
       - build
