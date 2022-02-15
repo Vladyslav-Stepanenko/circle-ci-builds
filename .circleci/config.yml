@@ -11,6 +11,11 @@ jobs:
           command: |
             cd packer/templates
             packer init .
+      - run:
+          name: Packer format source code
+          command: |
+            cd packer
+            packer fmt -check -recursive .
 workflows:
   build-ami:
     jobs:
