@@ -16,6 +16,11 @@ jobs:
           command: |
             cd packer
             packer fmt -check -recursive .
+      - run:
+          name: Packer validate
+          command: |
+            cd packer
+            packer validate ./templates
 workflows:
   build-ami:
     jobs:
