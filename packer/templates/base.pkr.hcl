@@ -25,6 +25,6 @@ source "amazon-ebs" "base" {
 build {
   sources = ["source.amazon-ebs.base"]
   provisioner "shell" {
-    script = "../scripts/install_nginx.sh"
+    script = "scripts/install_nginx.sh"
   }
 }
