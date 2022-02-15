@@ -10,9 +10,7 @@ jobs:
       - run:
           name: Packer init & check formatting & validate template
           command: |
-            packer init .
-            packer fmt -check -recursive .
-            packer validate .
+            ls -la
 workflows:
   build-ami:
     jobs:
