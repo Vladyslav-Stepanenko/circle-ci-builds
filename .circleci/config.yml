@@ -2,7 +2,6 @@ version: 2.1
 
 jobs:
   build:
-    working_directory: ~/packer/templates
     docker:
       - image: hashicorp/packer:1.7.9
     steps:
@@ -10,7 +9,11 @@ jobs:
       - run:
           name: Packer init & check formatting & validate template
           command: |
-            ls -la
+            cd packer/
+            packer init ./templates
+            packer fmt -check -recursive .
+            packer validate ./templates
+            
 workflows:
   build-ami:
     jobs:
