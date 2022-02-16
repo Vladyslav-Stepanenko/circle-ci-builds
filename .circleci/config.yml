@@ -5,19 +5,18 @@ jobs:
     docker:
       - image: hashicorp/packer:1.7.9
     resource_class: small
-    working_directory: ~/project/packer
+    working_directory: ~/project
     steps:
-      - checkout:
-          path: ~/project
+      - checkout
       - run:
           name: Packer init
-          command: packer init ./templates
+          command: packer init ./packer/templates
       - run:
           name: Packer fmt
-          command: packer fmt -check -diff -recursive .
+          command: packer fmt -check -recursive ./packer
       - run:
           name: Packer validate
-          command: packer validate ./templates
+          command: packer validate ./packer/templates
       # - run:
       #     name: Packer build
       #     command: |
