@@ -4,6 +4,7 @@ jobs:
   build:
     docker:
       - image: hashicorp/packer:1.7.9
+    resource_class: small
     steps:
       - checkout
       - run:
