@@ -10,20 +10,20 @@ jobs:
       - checkout
       - run:
           working_directory: ~/packer
+          name: ls
+          command: ls -la
+      - run:
+          working_directory: ~/packer
           name: Packer init
-          command: |
-            packer init ./templates
+          command: packer init ./templates
       - run:
           working_directory: ~/packer
           name: Packer fmt
-          command: |
-            packer fmt -check -recursive .
+          command: packer fmt -check -recursive .
       - run:
           working_directory: ~/packer
           name: Packer validate
-          command: |
-            cd packer
-            packer validate ./templates
+          command: packer validate ./templates
       # - run:
       #     name: Packer build
       #     command: |
