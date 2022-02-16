@@ -9,21 +9,14 @@ jobs:
     steps:
       - checkout
       - run:
-          working_directory: ~/packer
-          name: ls
-          command: ls -la
-      - run:
-          working_directory: ~/packer
           name: Packer init
-          command: packer init ./templates
+          command: packer init ./packer/templates
       - run:
-          working_directory: ~/packer
           name: Packer fmt
-          command: packer fmt -check -recursive .
+          command: packer fmt -check -recursive ./packer
       - run:
-          working_directory: ~/packer
           name: Packer validate
-          command: packer validate ./templates
+          command: packer validate ./packer/templates
       # - run:
       #     name: Packer build
       #     command: |
