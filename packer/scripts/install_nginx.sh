@@ -7,7 +7,7 @@ sudo ufw reload
 sudo ufw status
 systemctl status nginx
 
-git clone git@github.com:Vladyslav-Stepanenko/nginx-test.git /home/ubuntu/nginx-test
+git clone https://github.com/Vladyslav-Stepanenko/nginx-test.git /home/ubuntu/nginx-test
 mv /etc/nginx/nginx.conf /home/ubuntu/nginx-test/nginx.conf
 
 sudo mkdir -p /home/ubuntu/www
