@@ -14,11 +14,11 @@ data "amazon-ami" "ubuntu-focal" {
 }
 
 source "amazon-ebs" "base" {
-  ami_name      = "ubuntu-with-nginx-${local.timestamp}"
+  ami_name              = "ubuntu-with-nginx-${local.timestamp}"
   region        = "us-west-2"
   instance_type = "t2.micro"
-  source_ami    = data.amazon-ami.ubuntu-focal.id
-  ssh_username  = "ubuntu"
+  source_ami  = data.amazon-ami.ubuntu-focal.id
+  ssh_username        = "ubuntu"
   tags          = { Provider = "Packer" }
 }
 
