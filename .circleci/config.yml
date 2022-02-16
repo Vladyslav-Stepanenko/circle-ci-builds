@@ -9,21 +9,24 @@ jobs:
     steps:
       - checkout
       - run:
-          working_directory: ~/project/circle_ci_builds/packer
-          name: Packer init
-          command: |
-            packer init ./templates
-      - run:
-          working_directory: ~/project/circle_ci_builds/packer
-          name: Packer fmt
-          command: |
-            packer fmt -check -recursive .
-      - run:
-          working_directory: ~/project/circle_ci_builds/packer
-          name: Packer validate
-          command: |
-            cd packer
-            packer validate ./templates
+          name: list files
+          command: ls -la
+      # - run:
+      #     working_directory: ~/project/circle_ci_builds/packer
+      #     name: Packer init
+      #     command: |
+      #       packer init ./templates
+      # - run:
+      #     working_directory: ~/project/circle_ci_builds/packer
+      #     name: Packer fmt
+      #     command: |
+      #       packer fmt -check -recursive .
+      # - run:
+      #     working_directory: ~/project/circle_ci_builds/packer
+      #     name: Packer validate
+      #     command: |
+      #       cd packer
+      #       packer validate ./templates
       # - run:
       #     name: Packer build
       #     command: |
