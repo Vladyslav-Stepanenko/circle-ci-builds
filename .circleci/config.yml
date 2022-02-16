@@ -1,32 +1,34 @@
 version: 2.1
 
 jobs:
-  build:
+  packer:
     docker:
       - image: hashicorp/packer:1.7.9
     resource_class: small
+    working_directory: ~/project
     steps:
       - checkout
       - run:
+          working_directory: ~/project/circle_ci_builds/packer
           name: Packer init
           command: |
-            cd packer/templates
-            packer init .
+            packer init ./templates
       - run:
-          name: Packer format source code
+          working_directory: ~/project/circle_ci_builds/packer
+          name: Packer fmt
           command: |
-            cd packer
             packer fmt -check -recursive .
       - run:
+          working_directory: ~/project/circle_ci_builds/packer
           name: Packer validate
           command: |
             cd packer
             packer validate ./templates
-      - run:
-          name: Packer build
-          command: |
-            cd packer
-            packer build ./templates
+      # - run:
+      #     name: Packer build
+      #     command: |
+      #       cd packer
+      #       packer build ./templates
 workflows:
   build-ami:
     jobs:
