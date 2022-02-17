@@ -14,9 +14,9 @@ jobs:
           command: |
             wget https://releases.hashicorp.com/packer/1.7.9/packer_1.7.9_linux_386.zip
             unzip packer_1.7.9_linux_386.zip
-            ls -l
-            #sudo mv packer_1.7.9_linux_386/packer /usr/local/bin
-            #packer -v
+            sudo mv packer /usr/local/bin
+            rm packer_1.7.9_linux_386.zip
+            packer -v
 
 workflows:
   build-ami:
