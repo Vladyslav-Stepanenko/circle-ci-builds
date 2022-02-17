@@ -12,12 +12,12 @@ jobs:
       - run:
           name: Install dependencies
           command: |
-            pip install ansible-core==2.12.2
+            # pip install ansible-core==2.12.2
             wget https://github.com/hashicorp/packer/archive/refs/tags/v1.7.9.tar.gz
             tar -xvzf v1.7.9.tar.gz
             sudo mv packer-1.7.9/packer /usr/local/bin/
             ls -l /usr/local/bin/
-            whoami
+            which packer
 workflows:
   build-ami:
     jobs:
