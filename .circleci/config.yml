@@ -1,27 +1,23 @@
 version: 2.1
 
 jobs:
-  packer:
+  build:
     docker:
-      - image: hashicorp/packer:1.7.9
+      - image: cimg/python:3.10.2
     resource_class: small
     working_directory: ~/project/packer
     steps:
       - checkout:
           path: ~/project
       - run:
-          name: Packer init
-          command: packer init ./templates
-      - run:
-          name: Packer fmt
-          command: packer fmt -check -diff -recursive .
-      - run:
-          name: Packer validate
-          command: packer validate ./templates
-      - run:
-          name: Packer build
-          command: packer build ./templates
+          name: Install dependencies
+          command: |
+            pip install ansible-core==2.12.2
+            wget https://github.com/hashicorp/packer/archive/refs/tags/v1.7.9.tar.gz
+            tar -xvzf v1.7.9.tar.gz
+            sudo mv packer-1.7.9/packer /usr/local/bin/
+            packer -v
 workflows:
   build-ami:
     jobs:
-      - packer
+      - build
