@@ -12,10 +12,11 @@ jobs:
       - run:
           name: Install dependencies
           command: |
-            wget https://github.com/hashicorp/packer/archive/refs/tags/v1.7.9.tar.gz
-            tar -xvzf v1.7.9.tar.gz
-            ls -l packer-1.7.9
-            sudo mv packer-1.7.9/packer /usr/local/bin/packer
+            sudo apt-get -y install unzip
+            wget https://releases.hashicorp.com/packer/1.7.9/packer_1.7.9_linux_386.zip
+            unzip -d packer
+            ls -l packer/
+
 workflows:
   build-ami:
     jobs:
