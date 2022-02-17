@@ -15,7 +15,8 @@ jobs:
             # pip install ansible-core==2.12.2
             wget https://github.com/hashicorp/packer/archive/refs/tags/v1.7.9.tar.gz
             tar -xvzf v1.7.9.tar.gz
-            sudo mv packer-1.7.9/packer /usr/local/bin/
+            #sudo mv packer-1.7.9/packer /usr/local/bin/
+            sudo ln -s packer-1.7.9/packer /usr/local/bin/packer
             ls -l /usr/local/bin/
             which packer
 workflows:
