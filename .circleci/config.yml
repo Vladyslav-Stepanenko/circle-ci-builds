@@ -17,6 +17,7 @@ jobs:
             tar -xvzf v1.7.9.tar.gz
             sudo mv packer-1.7.9/packer /usr/local/bin/
             ls -l /usr/local/bin/
+            whoami
 workflows:
   build-ami:
     jobs:
