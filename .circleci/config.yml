@@ -14,9 +14,8 @@ jobs:
           command: |
             wget https://github.com/hashicorp/packer/archive/refs/tags/v1.7.9.tar.gz
             tar -xvzf v1.7.9.tar.gz
+            ls -l packer-1.7.9
             sudo mv packer-1.7.9/packer /usr/local/bin/packer
-            ls -l /usr/local/bin/
-            /usr/local/bin/packer -v
 workflows:
   build-ami:
     jobs:
