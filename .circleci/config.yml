@@ -5,18 +5,16 @@ jobs:
     docker:
       - image: cimg/python:3.10.2
     resource_class: small
-    working_directory: ~/project/packer
     steps:
       - checkout:
-          path: ~/project
+          path: ~/project1
+      - add_ssh_keys:
+          fingerprints:
+            - "8c:3b:4d:31:a6:9b:a9:0b:e3:6d:c1:a6:5e:9c:4e:4f"
       - run:
-          name: Install dependencies
-          command: |
-            wget https://github.com/hashicorp/packer/archive/refs/tags/v1.7.9.tar.gz
-            tar -xvzf v1.7.9.tar.gz
-            sudo mv packer-1.7.9/packer /usr/local/bin/
-            export PATH=$PATH:/usr/local/bin/
-            packer -v
+          name: Clone GitHub repository1
+          command: git clone git@github.com:HonkMobileCo/castle.git
+
 workflows:
   build-ami:
     jobs:
